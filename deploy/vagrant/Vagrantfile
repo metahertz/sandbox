@@ -42,10 +42,11 @@ Vagrant.configure("2") do |config|
                                           mac: "0800279EF53A",
                                           adapter: 1,
                                           libvirt__network_name: "tink_network",
-                                          libvirt__dhcp_enabled: false,
+                                          libvirt__dhcp_enabled: true,
                                           libvirt__forward_mode: "nat"
 
     machine1.vm.provider "libvirt" do |v|
+      v.storage :file, :device => :cdrom, :path => 'fleetup.iso'
       v.storage :file, :size => "20G"
       v.memory = 4096
       v.cpus = 2
